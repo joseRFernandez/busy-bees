@@ -18,11 +18,12 @@ export default {
     },
     text: {
       type: String,
+      default: "Button",
     },
   },
   methods: {
     childClick() {
-      this.$emit("child-click");
+      this.$emit("child-click", 1);
     },
   },
 };
