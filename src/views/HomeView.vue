@@ -1,14 +1,25 @@
 <template>
   <div class="home">
-    <h1>Home View Under Construction...</h1>
+    <base-button
+      text="Click Me"
+      propStyles="is-primary"
+      @childClick="handleChildClick"
+    >
+      <slot />
+    </base-button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import BaseButton from "../components/BaseButton.vue";
 
 export default {
   name: "HomeView",
-  components: {},
+  components: { BaseButton },
+  methods: {
+    handleChildClick() {
+      alert("Click received on parent");
+    },
+  },
 };
 </script>
