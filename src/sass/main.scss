@@ -1,0 +1,15 @@
+// Bulma Import
+@import "~bulma";
+
+//list variable imports here
+@import "./variables/breakpoints.scss";
+
+// list components here
+@import "./components/BaseButton.scss";
+
+// list views here
+@import "./views/theCreateAccountPage.scss";
+// main styles
+#app {
+  min-height: 100vh;
+}

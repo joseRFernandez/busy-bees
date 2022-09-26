@@ -1,0 +1,11 @@
+#the-create-account-page {
+  height: calc(100% - 70px);
+  .create-account-page__title {
+  }
+
+  .create-account-page__buttons {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+  }
+}

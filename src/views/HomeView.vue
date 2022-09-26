@@ -1,25 +1,13 @@
 <template>
   <div class="home">
-    <base-button
-      text="Click Me"
-      propStyles="is-primary"
-      @childClick="handleChildClick"
-    >
-      <slot />
-    </base-button>
+    <the-create-account-page></the-create-account-page>
   </div>
 </template>
 
 <script>
-import BaseButton from "../components/BaseButton.vue";
-
+import TheCreateAccountPage from "./account-signup/TheCreateAccountPage.vue";
 export default {
   name: "HomeView",
-  components: { BaseButton },
-  methods: {
-    handleChildClick() {
-      alert("Click received on parent");
-    },
-  },
+  components: { TheCreateAccountPage },
 };
 </script>
