@@ -1,11 +1,28 @@
 #the-create-account-page {
-  height: calc(100% - 70px);
-  .create-account-page__title {
-  }
+  height: calc(100vh - 70px);
 
-  .create-account-page__buttons {
-    display: flex;
-    justify-content: center;
-    margin: 1rem;
+  .hero {
+    height: 100%;
+
+    .hero-body {
+      flex-direction: column;
+      justify-content: space-around;
+
+      .title {
+        align-self: flex-start;
+      }
+
+      .create-account-form {
+        .create-account-page__buttons {
+          display: flex;
+          justify-content: center;
+          margin: 1rem;
+
+          .create-account-page__button {
+            margin: 1rem;
+          }
+        }
+      }
+    }
   }
 }

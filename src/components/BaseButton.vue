@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     childClick() {
-      this.$emit("child-click", 1);
+      this.$emit("child-click");
     },
   },
 };

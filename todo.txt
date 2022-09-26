@@ -1,0 +1,4 @@
+todo
+[X] - choose font package for page
+[X] - complete signup form
+[X] - styling

@@ -3,13 +3,18 @@
 
 //list variable imports here
 @import "./variables/breakpoints.scss";
+@import "./variables/fonts.scss";
 
 // list components here
 @import "./components/BaseButton.scss";
 
 // list views here
+@import "./views/theHomeView.scss";
 @import "./views/theCreateAccountPage.scss";
+
 // main styles
 #app {
   min-height: 100vh;
+  box-sizing: border-box;
+  font-family: $font-lato;
 }
