@@ -1,4 +1,10 @@
 todo
+Skeleton
 [X] - choose font package for page
 [X] - complete signup form
 [X] - styling
+
+Validation - FE
+[X] - validate username
+[ ] - validate password
+[ ] - connect icon effects to validation

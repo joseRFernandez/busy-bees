@@ -1,13 +1,9 @@
 <template>
-  <div class="home">
-    <the-create-account-page></the-create-account-page>
-  </div>
+  <div class="home">Home Page Under Construction...</div>
 </template>
 
 <script>
-import TheCreateAccountPage from "./account-signup/TheCreateAccountPage.vue";
 export default {
   name: "HomeView",
-  components: { TheCreateAccountPage },
 };
 </script>
