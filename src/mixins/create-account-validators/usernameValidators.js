@@ -43,6 +43,8 @@ export default {
       } else {
         console.log("No Errors");
       }
+
+      return userErrors.length;
     },
   },
 };

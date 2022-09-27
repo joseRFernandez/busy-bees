@@ -13,7 +13,7 @@
           <span class="icon is-small is-left">
             <i class="fa-solid fa-user"></i>
           </span>
-          <span class="icon is-small is-right">
+          <span class="icon is-small is-right" v-if="userNameValid">
             <i class="fas fa-check"></i>
           </span>
         </p>
@@ -67,6 +67,11 @@ export default {
       formSubmitted: false,
     };
   },
+  computed: {
+    userNameValid() {
+      return this.validateUsername(this.inputUsername) ? false : true;
+    },
+  },
   methods: {
     //UNFINISHED
     // idea is that we will perform an action based on the click text
@@ -74,12 +79,12 @@ export default {
       if (childText == "Sign Up") {
         alert(`Clicked ${childText}`);
         // if we clicked the green btn send over username to validation
-        this.validUsername(this.inputUsername);
+        this.validateUsername(this.inputUsername);
       }
     },
-    validUsername(inputUsername) {
+    validateUsername(inputUsername) {
       //   // at this point we have the currentInputUsername
-      this.allUsernameValidations(inputUsername);
+      return this.allUsernameValidations(inputUsername);
     },
   },
 };
