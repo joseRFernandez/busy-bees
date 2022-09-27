@@ -40,8 +40,6 @@ export default {
       // if our array has at least one error display errors
       if (userErrors.length > 0) {
         userErrors.forEach((error) => console.log(error));
-      } else {
-        console.log("No Errors");
       }
 
       return userErrors.length;

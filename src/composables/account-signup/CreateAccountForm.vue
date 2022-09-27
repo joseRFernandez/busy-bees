@@ -7,6 +7,7 @@
           <input
             class="input"
             type="text"
+            autocomplete="username"
             placeholder="eg. JohnSmith123"
             v-model="inputUsername"
           />
@@ -24,6 +25,7 @@
           <input
             class="input"
             type="password"
+            autocomplete="current-password"
             v-model="inputPassword"
             placeholder="Password"
           />
@@ -71,8 +73,17 @@ export default {
     userNameValid() {
       return this.validateUsername(this.inputUsername) ? false : true;
     },
+    passwordValid() {
+      return this.validatePassword(this.inputPassword) ? false : true;
+    },
   },
   methods: {
+    clearUsername() {
+      this.inputUsername = "";
+    },
+    clearPassword() {
+      this.inputPassword = "";
+    },
     //UNFINISHED
     // idea is that we will perform an action based on the click text
     handleChildClick(childText) {
@@ -80,11 +91,18 @@ export default {
         alert(`Clicked ${childText}`);
         // if we clicked the green btn send over username to validation
         this.validateUsername(this.inputUsername);
+        this.validatePassword(this.inputPassword);
+      }
+      if (childText == "Cancel") {
+        this.clearUsername();
+        this.clearPassword();
       }
     },
     validateUsername(inputUsername) {
-      //   // at this point we have the currentInputUsername
       return this.allUsernameValidations(inputUsername);
+    },
+    validatePassword(inputPassword) {
+      return this.allPasswordValidations(inputPassword);
     },
   },
 };
