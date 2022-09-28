@@ -4,6 +4,7 @@ export default {
       inputUsername: "",
       inputPassword: "",
       formSubmitted: false,
+      usernameError: "",
       passwordError: "",
     };
   },
@@ -15,7 +16,7 @@ export default {
       this.inputPassword = "";
     },
     clearErrors() {
-      this.passwordError = "";
+      (this.usernameError = ""), (this.passwordError = "");
     },
     toggleFormSubmitted() {
       this.formSubmitted = !this.formSubmitted;

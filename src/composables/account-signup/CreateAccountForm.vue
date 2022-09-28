@@ -1,7 +1,7 @@
 <template>
   <div class="create-account-form">
     <form class="form">
-      <!-- <div class="field">
+      <div class="field">
         <label for="username" class="label">Username</label>
         <p class="control has-icons-left has-icons-right">
           <input
@@ -18,7 +18,10 @@
             <i class="fas fa-check"></i>
           </span>
         </p>
-      </div> -->
+        <p class="error-message" v-if="usernameError">
+          {{ usernameError }}
+        </p>
+      </div>
       <div class="field">
         <label for="password" class="label">Password</label>
         <p class="control has-icons-left">
@@ -70,7 +73,9 @@ export default {
   },
   computed: {
     userNameValid() {
-      return this.validateUsername(this.inputUsername) ? false : true;
+      return this.validateUsername(this.inputUsername).length > 0
+        ? false
+        : true;
     },
     passwordValid() {
       return this.validatePassword(this.inputPassword).length > 0
@@ -85,7 +90,6 @@ export default {
       if (childText == "Sign Up") {
         alert(`Clicked ${childText}`);
         // if we clicked the green btn send over username to validation
-        // this.validateUsername(this.inputUsername);
         this.handleFormSubmit();
       }
       if (childText == "Cancel") {
@@ -106,6 +110,10 @@ export default {
       // clear errors
       this.clearErrors();
       // if errors exist - set them
+      const usernameErrors = this.validateUsername(this.inputUsername);
+      if (usernameErrors.length > 0) {
+        this.usernameError = usernameErrors[0];
+      }
       const passwordErrors = this.validatePassword(this.inputPassword);
       if (passwordErrors.length > 0) {
         this.passwordError = passwordErrors[0];

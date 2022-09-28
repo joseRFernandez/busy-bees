@@ -24,7 +24,7 @@ export default {
         containsOnlyAlphaNum: () => {
           return /^[a-z0-9]+$/i.test(inputName)
             ? null
-            : "Username must be only letters or numbers.  No special symbols";
+            : "Username must be only letters, numbers, or spaces.  No special symbols";
         },
       };
 
@@ -37,12 +37,7 @@ export default {
 
       // TODO - once our validation architechture is complete we will handle this differently
 
-      // if our array has at least one error display errors
-      if (userErrors.length > 0) {
-        userErrors.forEach((error) => console.log(error));
-      }
-
-      return userErrors.length;
+      return userErrors;
     },
   },
 };
