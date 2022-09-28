@@ -13,6 +13,14 @@
       }
 
       .create-account-form {
+        .field {
+          p {
+
+            &.error-message {
+              color: red;
+            }
+          }
+        }
         .create-account-page__buttons {
           display: flex;
           justify-content: center;

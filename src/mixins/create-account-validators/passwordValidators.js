@@ -34,13 +34,7 @@ export default {
         }
       }
 
-      if (userErrors.length > 0) {
-        userErrors.forEach((error) => {
-          console.log(error);
-        });
-      }
-
-      return userErrors.length;
+      return userErrors;
     },
   },
 };

@@ -1,7 +1,7 @@
 <template>
   <div class="create-account-form">
     <form class="form">
-      <div class="field">
+      <!-- <div class="field">
         <label for="username" class="label">Username</label>
         <p class="control has-icons-left has-icons-right">
           <input
@@ -18,7 +18,7 @@
             <i class="fas fa-check"></i>
           </span>
         </p>
-      </div>
+      </div> -->
       <div class="field">
         <label for="password" class="label">Password</label>
         <p class="control has-icons-left">
@@ -33,6 +33,7 @@
             <i class="fas fa-lock"></i>
           </span>
         </p>
+        <p class="error-message" v-if="passwordError">{{ passwordError }}</p>
       </div>
       <div class="create-account-page__buttons">
         <create-account-button
@@ -51,22 +52,20 @@
 <script>
 import createAccountButton from "../../components/BaseButton.vue";
 import formValidators from "../../mixins/create-account-validators";
+import authFormCommon from "../../commons/authForm.common";
 
 export default {
   name: "create-account-form",
   components: {
     createAccountButton,
   },
-  mixins: [formValidators],
+  mixins: [formValidators, authFormCommon],
   data() {
     return {
       buttons: [
         { text: "Cancel", propStyles: ["is-warning"], isLoading: false },
         { text: "Sign Up", propStyles: ["is-primary"], isLoading: false },
       ],
-      inputUsername: "",
-      inputPassword: "",
-      formSubmitted: false,
     };
   },
   computed: {
@@ -74,24 +73,20 @@ export default {
       return this.validateUsername(this.inputUsername) ? false : true;
     },
     passwordValid() {
-      return this.validatePassword(this.inputPassword) ? false : true;
+      return this.validatePassword(this.inputPassword).length > 0
+        ? false
+        : true;
     },
   },
   methods: {
-    clearUsername() {
-      this.inputUsername = "";
-    },
-    clearPassword() {
-      this.inputPassword = "";
-    },
     //UNFINISHED
     // idea is that we will perform an action based on the click text
     handleChildClick(childText) {
       if (childText == "Sign Up") {
         alert(`Clicked ${childText}`);
         // if we clicked the green btn send over username to validation
-        this.validateUsername(this.inputUsername);
-        this.validatePassword(this.inputPassword);
+        // this.validateUsername(this.inputUsername);
+        this.handleFormSubmit();
       }
       if (childText == "Cancel") {
         this.clearInputs();
@@ -106,6 +101,15 @@ export default {
     },
     validatePassword(inputPassword) {
       return this.allPasswordValidations(inputPassword);
+    },
+    handleFormSubmit() {
+      // clear errors
+      this.clearErrors();
+      // if errors exist - set them
+      const passwordErrors = this.validatePassword(this.inputPassword);
+      if (passwordErrors.length > 0) {
+        this.passwordError = passwordErrors[0];
+      }
     },
   },
 };
