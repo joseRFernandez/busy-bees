@@ -1,0 +1,36 @@
+#the-create-account-page {
+  height: calc(100vh - 70px);
+
+  .hero {
+    height: 100%;
+
+    .hero-body {
+      flex-direction: column;
+      justify-content: space-around;
+
+      .title {
+        align-self: flex-start;
+      }
+
+      .create-account-form {
+        .field {
+          p {
+
+            &.error-message {
+              color: red;
+            }
+          }
+        }
+        .create-account-page__buttons {
+          display: flex;
+          justify-content: center;
+          margin: 1rem;
+
+          .create-account-page__button {
+            margin: 1rem;
+          }
+        }
+      }
+    }
+  }
+}

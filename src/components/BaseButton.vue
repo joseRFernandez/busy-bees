@@ -2,7 +2,7 @@
 alternatively, it can receive a component as a slot to display
 
 <template>
-  <button class="button" :class="propStyles" @click="childClick">
+  <button class="button" :class="propStyles" @click.prevent="childClick">
     <span>{{ text }}</span>
     <slot />
   </button>
@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     childClick() {
-      this.$emit("child-click", 1);
+      this.$emit("child-click", this.text);
     },
   },
 };
