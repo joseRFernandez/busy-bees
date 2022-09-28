@@ -94,12 +94,15 @@ export default {
         this.validatePassword(this.inputPassword);
       }
       if (childText == "Cancel") {
-        this.clearUsername();
-        this.clearPassword();
+        this.clearInputs();
       }
     },
     validateUsername(inputUsername) {
       return this.allUsernameValidations(inputUsername);
+    },
+    clearInputs() {
+      this.clearUsername();
+      this.clearPassword();
     },
     validatePassword(inputPassword) {
       return this.allPasswordValidations(inputPassword);
