@@ -88,7 +88,6 @@ export default {
     // idea is that we will perform an action based on the click text
     handleChildClick(childText) {
       if (childText == "Sign Up") {
-        alert(`Clicked ${childText}`);
         // if we clicked the green btn send over username to validation
         this.handleFormSubmit();
       }
