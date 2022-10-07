@@ -47,6 +47,8 @@
           @childClick="handleChildClick"
           class="create-account-page__button"
         ></create-account-button>
+        <button @click.prevent="testRead">Read Tests</button>
+        <button @click.prevent="testCreate">Write Tests</button>
       </div>
     </form>
   </div>
@@ -56,6 +58,8 @@
 import createAccountButton from "../../components/BaseButton.vue";
 import formValidators from "../../mixins/create-account-validators";
 import authFormCommon from "../../commons/authForm.common";
+import { tests } from "../../firebase/db/read/tests";
+import { addUser } from "../../firebase/db/create/tests";
 
 export default {
   name: "create-account-form",
@@ -69,6 +73,7 @@ export default {
         { text: "Cancel", propStyles: ["is-warning"], isLoading: false },
         { text: "Sign Up", propStyles: ["is-primary"], isLoading: false },
       ],
+      ableToSubmitNewAccount: false,
     };
   },
   computed: {
@@ -82,9 +87,17 @@ export default {
         ? false
         : true;
     },
+    formFreeOfErrors() {
+      return this.userNameValid && this.passwordValid;
+    },
   },
   methods: {
-    //UNFINISHED
+    testRead() {
+      console.log(tests);
+    },
+    testCreate() {
+      addUser(this.inputUsername, this.inputPassword);
+    },
     // idea is that we will perform an action based on the click text
     handleChildClick(childText) {
       if (childText == "Sign Up") {
@@ -106,16 +119,13 @@ export default {
       return this.allPasswordValidations(inputPassword);
     },
     handleFormSubmit() {
-      // clear errors
       this.clearErrors();
-      // if errors exist - set them
-      const usernameErrors = this.validateUsername(this.inputUsername);
-      if (usernameErrors.length > 0) {
-        this.usernameError = usernameErrors[0];
-      }
-      const passwordErrors = this.validatePassword(this.inputPassword);
-      if (passwordErrors.length > 0) {
-        this.passwordError = passwordErrors[0];
+      if (this.formFreeOfErrors) {
+        // we should use a modal here to look cool
+        this.testCreate();
+      } else {
+        // here we need to show user that they need to fix errors
+        alert("fix yo shit");
       }
     },
   },
