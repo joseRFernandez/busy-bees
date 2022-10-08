@@ -2,7 +2,7 @@
   <div id="the-create-account-page">
     <div class="hero is-fullheight-with-navbar">
       <div class="hero-body">
-        <h2 class="title">Create Account</h2>
+        <h2 class="title">Test Create Account</h2>
         <CreateAccountForm />
       </div>
     </div>
